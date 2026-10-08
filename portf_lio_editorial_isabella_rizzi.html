@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Isabella Correia Rizzi | Portfólio & Dev</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        editorial: {
+                            bg: '#f7f5f0',
+                            card: '#ffffff',
+                            dark: '#161616',
+                            accent: '#8b5cf6',
+                            rose: '#f43f5e',
+                            lavender: '#e2d9fc',
+                            muted: '#737373',
+                            yellow: '#fef08a'
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['Playfair Display', 'Georgia', 'serif'],
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        hand: ['Caveat', 'cursive']
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @keyframes float-1 {
+            0%, 100% { transform: translateY(0px) rotate(-3deg); }
+            50% { transform: translateY(-14px) rotate(2deg); }
+        }
+        @keyframes float-2 {
+            0%, 100% { transform: translateY(0px) rotate(4deg); }
+            50% { transform: translateY(-18px) rotate(-2deg); }
+        }
+        .animate-float-1 { animation: float-1 6s ease-in-out infinite; }
+        .animate-float-2 { animation: float-2 8s ease-in-out infinite 1s; }
+
+        .polaroid-card {
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            background: #ffffff;
+            box-shadow: 0 15px 35px -5px rgba(0, 0, 0, 0.1);
+        }
+        .polaroid-card:hover {
+            transform: translateY(-10px) rotate(0deg) scale(1.03) !important;
+            box-shadow: 0 30px 60px -12px rgba(139, 92, 246, 0.25);
+            z-index: 40;
+        }
+
+        .card-rotator {
+            transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.4s ease;
+        }
+        .card-rotator.locked {
+            transform: scale(1.05) rotate(0deg) !important;
+            z-index: 50;
+            box-shadow: 0 35px 70px -15px rgba(244, 63, 94, 0.3);
+            border-color: #f43f5e !important;
+        }
+
+        .sticker {
+            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        .sticker:hover {
+            transform: scale(1.15) rotate(12deg);
+        }
+
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f7f5f0; }
+        ::-webkit-scrollbar-thumb { background: #d4d4d4; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #8b5cf6; }
+    </style>
+</head>
+<body class="bg-editorial-bg text-editorial-dark font-sans antialiased selection:bg-editorial-lavender selection:text-editorial-dark overflow-x-hidden">
+
+    <!-- Navigation Bar -->
+    <header class="sticky top-0 z-50 backdrop-blur-md bg-editorial-bg/85 border-b border-editorial-dark/10 transition-all">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="#" class="font-serif text-2xl font-bold tracking-tight flex items-center gap-2 group">
+                <span class="w-3 h-3 rounded-full bg-editorial-rose animate-ping"></span>
+                isaa<span class="text-editorial-accent group-hover:rotate-12 transition-transform inline-block">.dev</span>
+            </a>
+            
+            <nav class="hidden md:flex items-center gap-8 font-medium text-sm tracking-wide">
+                <a href="#sobre" class="hover:text-editorial-accent transition-colors relative py-1 after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-editorial-accent hover:after:w-full after:transition-all">Sobre</a>
+                <a href="#experiencia" class="hover:text-editorial-accent transition-colors relative py-1 after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-editorial-accent hover:after:w-full after:transition-all">Experiência</a>
+                <a href="#projetos" class="hover:text-editorial-accent transition-colors relative py-1 after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-editorial-accent hover:after:w-full after:transition-all">Projetos</a>
+                <a href="#formacao" class="hover:text-editorial-accent transition-colors relative py-1 after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-editorial-accent hover:after:w-full after:transition-all">Formação</a>
+            </nav>
+
+            <a href="#contato" class="bg-editorial-dark text-white px-6 py-2.5 rounded-full text-sm font-semibold hover:bg-editorial-accent hover:scale-105 transition-all duration-300 shadow-sm">
+                Vamos Conversar
+            </a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="max-w-7xl mx-auto px-6 pt-16 pb-24 md:pt-24 md:pb-32 relative">
+        <div class="absolute top-10 left-10 hidden lg:block">
+            <span class="font-hand text-2xl text-editorial-accent bg-editorial-lavender px-3 py-1 rounded-full shadow-sm -rotate-6 inline-block">✨ Welcome to my portfolio!</span>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            
+            <div class="lg:col-span-7 space-y-6 z-10">
+                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-editorial-lavender text-editorial-dark text-xs font-semibold tracking-wider uppercase shadow-sm">
+                    <span class="w-2 h-2 rounded-full bg-editorial-accent animate-pulse"></span>
+                    <span>IT Intern @ Seta Tech & Full-Stack Dev</span>
+                </div>
+                
+                <h1 class="font-serif text-5xl md:text-7xl lg:text-8xl font-black tracking-tight leading-[1.02]">
+                    HEY, IT'S <br>
+                    <span class="text-editorial-accent italic font-normal inline-block hover:scale-105 transition-transform cursor-pointer">ISABELLA</span> RIZZI
+                </h1>
+                
+                <p class="text-lg md:text-xl text-editorial-muted max-w-xl font-normal leading-relaxed">
+                    Desenvolvedora de software apaixonada por criar soluções funcionais, estruturadas e orientadas à experiência do usuário. Da infraestrutura ao código de ponta.
+                </p>
+
+                <div class="flex flex-wrap items-center gap-4 pt-4">
+                    <a href="#projetos" class="bg-editorial-dark text-white px-8 py-4 rounded-full font-semibold text-sm hover:bg-editorial-accent transition-all shadow-xl hover:shadow-editorial-accent/30 flex items-center gap-2 group">
+                        Ver Projetos <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+                    </a>
+                    <a href="https://github.com/Isaa-dev" target="_blank" class="border-2 border-editorial-dark/20 px-8 py-4 rounded-full font-semibold text-sm hover:border-editorial-dark hover:bg-editorial-dark/5 transition-all flex items-center gap-2">
+                        <i data-lucide="github" class="w-4 h-4"></i> GitHub
+                    </a>
+                </div>
+            </div>
+
+            <!-- Hero Polaroid Card -->
+            <div class="lg:col-span-5 flex justify-center relative">
+                <div class="absolute -top-8 -right-4 sticker z-20 bg-editorial-yellow text-editorial-dark font-hand text-xl px-4 py-2 rounded-xl shadow-md rotate-12">
+                    🌟 Dev em Ação!
+                </div>
+                <div class="polaroid-card p-4 pb-6 rounded-3xl rotate-2 max-w-sm w-full border border-black/5 animate-float-1 cursor-pointer">
+                    <div class="relative overflow-hidden rounded-2xl aspect-[4/5] bg-editorial-lavender group">
+                        <!-- Imagem atualizada para avatar.jpeg -->
+                        <img src="avatar.jpeg" alt="Isabella Lego Avatar" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute bottom-3 left-3 bg-black/75 backdrop-blur-md text-white text-xs px-3 py-1.5 rounded-full font-medium flex items-center gap-2">
+                            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span> São Paulo, Brasil 🇧🇷
+                        </div>
+                    </div>
+                    <div class="mt-4 flex items-center justify-between px-2">
+                        <div>
+                            <h3 class="font-serif font-bold text-lg">Isabella Correia Rizzi</h3>
+                            <p class="text-xs text-editorial-muted">Software Developer & IT Intern</p>
+                        </div>
+                        <span class="font-hand text-2xl text-editorial-accent">isaa-dev</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Marquee Banner -->
+    <div class="bg-editorial-dark text-white py-4 overflow-hidden whitespace-nowrap border-y border-white/10 shadow-inner my-8">
+        <div class="inline-flex animate-[marquee_25s_linear_infinite] gap-12 text-sm uppercase tracking-widest font-semibold text-editorial-lavender">
+            <span>✦ REACT & TYPESCRIPT</span>
+            <span>✦ FIREBASE FIRESTORE</span>
+            <span>✦ PYTHON & OPTILM GATEWAY</span>
+            <span>✦ ESCALIFY SAAS</span>
+            <span>✦ INFRAESTRUTURA & SUPORTE</span>
+            <span>✦ REACT & TYPESCRIPT</span>
+            <span>✦ FIREBASE FIRESTORE</span>
+        </div>
+    </div>
+
+    <!-- Sobre Section -->
+    <section id="sobre" class="max-w-7xl mx-auto px-6 py-24">
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-12 items-center">
+            <div class="md:col-span-4">
+                <span class="text-xs uppercase tracking-widest text-editorial-accent font-bold">01 // Sobre Mim</span>
+                <h2 class="font-serif text-4xl font-bold mt-2">Tecnologia com propósito, design e inovação.</h2>
+            </div>
+            <div class="md:col-span-8 space-y-6 text-lg text-editorial-muted leading-relaxed">
+                <p>
+                    Atualmente atuo como <strong class="text-editorial-dark font-semibold">Estagiária de TI na Seta Tech</strong>, onde transito perfeitamente entre infraestrutura e desenvolvimento: análise de sistemas, identificação de melhorias e implementação de soluções robustas para otimizar processos e funcionalidades dos sistemas internos.
+                </p>
+                <p>
+                    Minha jornada também passou pelo <strong class="text-editorial-dark font-semibold">will bank</strong> como Jovem Aprendiz (CX | Fatura e Pagamento), onde desenvolvi uma forte leitura de dados operacionais, acompanhamento de KPIs (CSAT, SLA) e consolidação com Looker e WFM.
+                </p>
+                <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 pt-6">
+                    <div class="bg-white p-6 rounded-3xl border border-editorial-dark/5 shadow-sm hover:shadow-md transition-shadow">
+                        <h4 class="font-serif font-bold text-2xl text-editorial-accent">React/TS</h4>
+                        <p class="text-xs text-editorial-muted mt-1">Frontend & Apps</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-3xl border border-editorial-dark/5 shadow-sm hover:shadow-md transition-shadow">
+                        <h4 class="font-serif font-bold text-2xl text-editorial-rose">Firebase</h4>
+                        <p class="text-xs text-editorial-muted mt-1">Realtime Firestore</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-3xl border border-editorial-dark/5 shadow-sm hover:shadow-md transition-shadow">
+                        <h4 class="font-serif font-bold text-2xl text-editorial-dark">Python</h4>
+                        <p class="text-xs text-editorial-muted mt-1">APIs & Automação</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experiência Profissional -->
+    <section id="experiencia" class="max-w-7xl mx-auto px-6 py-24 border-t border-editorial-dark/10">
+        <div class="max-w-3xl mb-16">
+            <span class="text-xs uppercase tracking-widest text-editorial-accent font-bold">02 // Trajetória Profissional</span>
+            <h2 class="font-serif text-4xl md:text-5xl font-bold mt-2">Experiência & Atuação</h2>
+        </div>
+
+        <div class="space-y-12">
+            <!-- Seta Tech -->
+            <div class="bg-white p-8 md:p-12 rounded-3xl border border-editorial-dark/10 shadow-sm relative overflow-hidden group hover:border-editorial-accent hover:shadow-xl transition-all">
+                <div class="absolute top-0 right-0 w-36 h-36 bg-editorial-lavender/40 rounded-bl-full pointer-events-none group-hover:scale-110 transition-transform"></div>
+                <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
+                    <div>
+                        <span class="text-xs font-bold uppercase tracking-wider text-editorial-accent px-3.5 py-1 rounded-full bg-editorial-lavender">Setembro de 2026 - Present (Atual)</span>
+                        <h3 class="font-serif text-3xl font-bold mt-3">Estagiária de TI</h3>
+                        <p class="text-lg font-medium text-editorial-muted">Seta Tech • São Paulo, Brasil</p>
+                    </div>
+                    <div class="bg-editorial-dark text-white px-4 py-2 rounded-xl text-xs font-semibold">
+                        Infraestrutura & Dev
+                    </div>
+                </div>
+                <p class="text-editorial-muted mb-6">
+                    Atuação em TI com foco em Infraestrutura e Desenvolvimento, contribuindo para a análise, manutenção e evolução dos sistemas da Setabot.
+                </p>
+                <ul class="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm text-editorial-dark font-medium">
+                    <li class="flex items-start gap-2 bg-editorial-bg p-3.5 rounded-2xl"><i data-lucide="check-circle-2" class="w-4 h-4 text-editorial-accent shrink-0 mt-0.5"></i> Análise de sistemas e identificação de oportunidades de melhoria</li>
+                    <li class="flex items-start gap-2 bg-editorial-bg p-3.5 rounded-2xl"><i data-lucide="check-circle-2" class="w-4 h-4 text-editorial-accent shrink-0 mt-0.5"></i> Desenvolvimento e implementação de soluções para otimizar processos</li>
+                    <li class="flex items-start gap-2 bg-editorial-bg p-3.5 rounded-2xl"><i data-lucide="check-circle-2" class="w-4 h-4 text-editorial-accent shrink-0 mt-0.5"></i> Proposição de melhorias na experiência e necessidades dos usuários</li>
+                    <li class="flex items-start gap-2 bg-editorial-bg p-3.5 rounded-2xl"><i data-lucide="check-circle-2" class="w-4 h-4 text-editorial-accent shrink-0 mt-0.5"></i> Apoio na manutenção e evolução dos sistemas internos</li>
+                    <li class="flex items-start gap-2 bg-editorial-bg p-3.5 rounded-2xl"><i data-lucide="check-circle-2" class="w-4 h-4 text-editorial-accent shrink-0 mt-0.5"></i> Identificação de problemas e busca por soluções eficientes</li>
+                    <li class="flex items-start gap-2 bg-editorial-bg p-3.5 rounded-2xl"><i data-lucide="check-circle-2" class="w-4 h-4 text-editorial-accent shrink-0 mt-0.5"></i> Atuação integrada entre infraestrutura, desenvolvimento e negócios</li>
+                </ul>
+            </div>
+
+            <!-- will bank -->
+            <div class="bg-white p-8 md:p-12 rounded-3xl border border-editorial-dark/10 shadow-sm relative overflow-hidden group hover:border-editorial-rose hover:shadow-xl transition-all">
+                <div class="absolute top-0 right-0 w-36 h-36 bg-editorial-rose/10 rounded-bl-full pointer-events-none group-hover:scale-110 transition-transform"></div>
+                <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
+                    <div>
+                        <span class="text-xs font-bold uppercase tracking-wider text-editorial-rose px-3.5 py-1 rounded-full bg-editorial-rose/10">Dezembro 2024 - Fevereiro 2026 (1 ano 3 meses)</span>
+                        <h3 class="font-serif text-3xl font-bold mt-3">Jovem Aprendiz (CX | Fatura e Pagamento)</h3>
+                        <p class="text-lg font-medium text-editorial-muted">will bank • São Paulo, Brasil</p>
+                    </div>
+                    <div class="bg-editorial-dark text-white px-4 py-2 rounded-xl text-xs font-semibold">
+                        Dados & Operações
+                    </div>
+                </div>
+                <p class="text-editorial-muted mb-6">
+                    Atuação direta com gestores e supervisores das equipes de atendimento, análise de dados operacionais voltados à performance e KPIs.
+                </p>
+                <ul class="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm text-editorial-dark font-medium">
+                    <li class="flex items-start gap-2 bg-editorial-bg p-3.5 rounded-2xl"><i data-lucide="check-circle-2" class="w-4 h-4 text-editorial-rose shrink-0 mt-0.5"></i> Acompanhamento de KPIs como CSAT, SLA, aderência e absenteísmo</li>
+                    <li class="flex items-start gap-2 bg-editorial-bg p-3.5 rounded-2xl"><i data-lucide="check-circle-2" class="w-4 h-4 text-editorial-rose shrink-0 mt-0.5"></i> Extração e consolidação de dados via Looker e sistemas de WFM</li>
+                    <li class="flex items-start gap-2 bg-editorial-bg p-3.5 rounded-2xl"><i data-lucide="check-circle-2" class="w-4 h-4 text-editorial-rose shrink-0 mt-0.5"></i> Tratamento, organização e análise avançada em planilhas</li>
+                    <li class="flex items-start gap-2 bg-editorial-bg p-3.5 rounded-2xl"><i data-lucide="check-circle-2" class="w-4 h-4 text-editorial-rose shrink-0 mt-0.5"></i> Desenvolvimento de dashboards e relatórios gerenciais</li>
+                    <li class="flex items-start gap-2 bg-editorial-bg p-3.5 rounded-2xl col-span-full"><i data-lucide="check-circle-2" class="w-4 h-4 text-editorial-rose shrink-0 mt-0.5"></i> Apoio à tomada de decisão orientada a dados e otimização operacional</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projetos -->
+    <section id="projetos" class="max-w-7xl mx-auto px-6 py-24 border-t border-editorial-dark/10 relative">
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+            <div>
+                <span class="text-xs uppercase tracking-widest text-editorial-accent font-bold">03 // Projetos em Destaque</span>
+                <h2 class="font-serif text-4xl md:text-5xl font-bold mt-2">Obras & Desenvolvimentos</h2>
+            </div>
+            <p class="text-editorial-muted max-w-md text-sm">
+                💡 <span class="font-semibold text-editorial-dark">Dica interativa:</span> Clique em qualquer cartão para pausá-lo e fixá-lo na tela, explorando os detalhes com tranquilidade.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 relative py-12">
+            
+            <!-- Escalify -->
+            <div class="card-rotator animate-float-1 bg-white p-8 md:p-10 rounded-3xl border-2 border-editorial-dark/15 shadow-xl cursor-pointer relative group" onclick="toggleLock(this)">
+                <div class="absolute -top-4 right-6 sticker bg-editorial-accent text-white px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider shadow-md -rotate-3">
+                    SaaS em Destaque 🚀
+                </div>
+                <div class="w-14 h-14 rounded-2xl bg-editorial-dark text-white flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                    <i data-lucide="layers" class="w-7 h-7"></i>
+                </div>
+                <h3 class="font-serif text-3xl font-bold mb-3">Escalify</h3>
+                <p class="text-editorial-muted mb-6 leading-relaxed">
+                    SaaS de escalonamento de equipes construído do zero. Conta com painel administrativo completo, confirmações em tempo real via Cloud Firestore e compartilhamento público de escalas.
+                </p>
+                <div class="flex flex-wrap gap-2.5 pt-4 border-t border-editorial-dark/5">
+                    <span class="px-3.5 py-1 rounded-full bg-editorial-bg text-xs font-semibold text-editorial-dark">React</span>
+                    <span class="px-3.5 py-1 rounded-full bg-editorial-bg text-xs font-semibold text-editorial-dark">TypeScript</span>
+                    <span class="px-3.5 py-1 rounded-full bg-editorial-bg text-xs font-semibold text-editorial-dark">Firebase Firestore</span>
+                </div>
+            </div>
+
+            <!-- Optilm Gateway -->
+            <div class="card-rotator animate-float-2 bg-white p-8 md:p-10 rounded-3xl border-2 border-editorial-dark/15 shadow-xl cursor-pointer relative group" onclick="toggleLock(this)">
+                <div class="absolute -top-4 right-6 sticker bg-editorial-rose text-white px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider shadow-md rotate-3">
+                    Novo Projeto 🔥
+                </div>
+                <div class="w-14 h-14 rounded-2xl bg-editorial-rose text-white flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                    <i data-lucide="cpu" class="w-7 h-7"></i>
+                </div>
+                <h3 class="font-serif text-3xl font-bold mb-3">Optilm Gateway</h3>
+                <p class="text-editorial-muted mb-6 leading-relaxed">
+                    Gateway de API de alta performance focado em otimização inteligente de rotas, microsserviços e gerenciamento avançado de requisições e segurança para sistemas distribuídos.
+                </p>
+                <div class="flex flex-wrap gap-2.5 pt-4 border-t border-editorial-dark/5">
+                    <span class="px-3.5 py-1 rounded-full bg-editorial-bg text-xs font-semibold text-editorial-dark">Python</span>
+                    <span class="px-3.5 py-1 rounded-full bg-editorial-bg text-xs font-semibold text-editorial-dark">APIs REST</span>
+                    <span class="px-3.5 py-1 rounded-full bg-editorial-bg text-xs font-semibold text-editorial-dark">Microservices</span>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Formação Acadêmica -->
+    <section id="formacao" class="max-w-7xl mx-auto px-6 py-24 border-t border-editorial-dark/10">
+        <div class="max-w-3xl mb-16">
+            <span class="text-xs uppercase tracking-widest text-editorial-accent font-bold">04 // Educação & Cursos</span>
+            <h2 class="font-serif text-4xl md:text-5xl font-bold mt-2">Formação Acadêmica</h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="bg-white p-8 rounded-3xl border border-editorial-dark/10 shadow-sm hover:shadow-lg transition-shadow">
+                <span class="text-xs font-bold text-editorial-accent bg-editorial-lavender px-3 py-1 rounded-full inline-block">2025 - 2027</span>
+                <h3 class="font-serif text-xl font-bold mt-4">Análise e Desenvolvimento de Sistemas</h3>
+                <p class="text-sm font-medium text-editorial-muted mt-1">Centro Universitário FAM</p>
+                <p class="text-xs text-editorial-muted mt-4">Curso Superior de Tecnologia (CST)</p>
+            </div>
+
+            <div class="bg-white p-8 rounded-3xl border border-editorial-dark/10 shadow-sm hover:shadow-lg transition-shadow">
+                <span class="text-xs font-bold text-editorial-rose bg-editorial-rose/10 px-3 py-1 rounded-full inline-block">2022 - 2025</span>
+                <h3 class="font-serif text-xl font-bold mt-4">Tecnologia em Informática</h3>
+                <p class="text-sm font-medium text-editorial-muted mt-1">Microcamp</p>
+                <p class="text-xs text-editorial-muted mt-4">Curso Técnico Integrado</p>
+            </div>
+
+            <div class="bg-white p-8 rounded-3xl border border-editorial-dark/10 shadow-sm hover:shadow-lg transition-shadow">
+                <span class="text-xs font-bold text-editorial-dark bg-editorial-dark/5 px-3 py-1 rounded-full inline-block">2022 - 2025</span>
+                <h3 class="font-serif text-xl font-bold mt-4">English Language and Literature</h3>
+                <p class="text-sm font-medium text-editorial-muted mt-1">Microcamp</p>
+                <p class="text-xs text-editorial-muted mt-4">Curso Técnico Integrado</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contato & Footer -->
+    <footer id="contato" class="bg-editorial-dark text-white pt-24 pb-12 rounded-t-[3rem] mt-24">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-12 pb-16 border-b border-white/10">
+                <div class="md:col-span-6 space-y-6">
+                    <span class="text-xs uppercase tracking-widest text-editorial-lavender font-bold">05 // Vamos Conectar</span>
+                    <h2 class="font-serif text-4xl md:text-6xl font-bold tracking-tight">Vamos construir algo incrível juntos?</h2>
+                    <p class="text-editorial-muted max-w-md text-base">
+                        Estou sempre aberta a novos desafios, projetos inovadores e conexões na área de desenvolvimento de software e tecnologia.
+                    </p>
+                </div>
+                <div class="md:col-span-6 flex flex-col justify-center space-y-4">
+                    <a href="mailto:isa160648@gmail.com" class="bg-white/10 hover:bg-white/20 p-6 rounded-2xl flex items-center justify-between transition-all group">
+                        <div>
+                            <span class="text-xs text-editorial-muted uppercase tracking-wider">E-mail</span>
+                            <h4 class="font-serif text-xl font-bold mt-1">isa160648@gmail.com</h4>
+                        </div>
+                        <i data-lucide="arrow-up-right" class="w-6 h-6 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform"></i>
+                    </a>
+
+                    <a href="https://www.linkedin.com/in/isabella-correia-rizzi-20b419217" target="_blank" class="bg-white/10 hover:bg-white/20 p-6 rounded-2xl flex items-center justify-between transition-all group">
+                        <div>
+                            <span class="text-xs text-editorial-muted uppercase tracking-wider">LinkedIn</span>
+                            <h4 class="font-serif text-xl font-bold mt-1">isabella-correia-rizzi</h4>
+                        </div>
+                        <i data-lucide="arrow-up-right" class="w-6 h-6 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform"></i>
+                    </a>
+
+                    <a href="https://github.com/Isaa-dev" target="_blank" class="bg-white/10 hover:bg-white/20 p-6 rounded-2xl flex items-center justify-between transition-all group">
+                        <div>
+                            <span class="text-xs text-editorial-muted uppercase tracking-wider">GitHub</span>
+                            <h4 class="font-serif text-xl font-bold mt-1">Isaa-dev</h4>
+                        </div>
+                        <i data-lucide="arrow-up-right" class="w-6 h-6 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="pt-12 flex flex-col md:flex-row items-center justify-between gap-6 text-sm text-editorial-muted">
+                <p>© 2026 Isabella Correia Rizzi. Todos os direitos reservados.</p>
+                <div class="flex items-center gap-6">
+                    <a href="#" class="hover:text-white transition-colors">Início</a>
+                    <a href="#sobre" class="hover:text-white transition-colors">Sobre</a>
+                    <a href="#experiencia" class="hover:text-white transition-colors">Experiência</a>
+                    <a href="#projetos" class="hover:text-white transition-colors">Projetos</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Script de Ícones e Interatividade -->
+    <script>
+        lucide.createIcons();
+
+        function toggleLock(element) {
+            document.querySelectorAll('.card-rotator').forEach(card => {
+                if (card !== element) {
+                    card.classList.remove('locked');
+                }
+            });
+            element.classList.toggle('locked');
+        }
+    </script>
+</body>
+</html>
